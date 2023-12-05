@@ -1,0 +1,128 @@
+{% extends 'admin/based.html' %}
+
+{% block title %}
+<title>Admin Category</title>
+{% endblock  %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+{% endblock  %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="admin-main-container">
+        <div class="admin-sidebar">
+            sidebar 
+        </div>
+        <div class="admin-main">
+           {% with messages=get_flashed_messages() %}
+          
+          {% if messages %}
+            
+            {% for message in messages %}
+              <p>{{message}}</p>
+            {% endfor %}
+              
+          {% endif %}
+            
+
+           {% endwith %}
+                <button id="showbtn"type="button" onclick="categoryform()">Show category</button>
+                 <div class="mytable hidetable">
+               <div class="tablediv">
+                <table class="table ">
+                  
+                    <thead>
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      {% for p in pro %}
+                      <tr>
+                        <td>{{ p.name }}</td>
+                        <td>
+                          <img class="adminproimg" src="{{ url_for('static',filename='productimg/'+ p.image) }}" alt="">
+                        </td>
+                        <td>${{p.price}}</td>
+                        <td>
+                          <a href="{{ url_for('editpro.edititem', id=p['id']) }}">Edite</a>
+                        </td>
+                        <td>
+                          <a href="{{ url_for('deletepro.deleteitem', id=p['id']) }}">Delete</a>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                        
+                      
+                     
+                    </tbody>
+                  </table>
+               </div>
+                  <div class="formdiv">
+                    <form action="{{ url_for('addproduct.addpro') }}" method="POST" enctype="multipart/form-data">
+                     {{ proform.csrf_token }}
+                        <input type="text" name="name" placeholder="Product name">
+                        <select name="catid" id="catid">
+                          <option >Chose Category</option>
+                          
+                          {% for c in allcat %}
+                            <option value="{{ c.id }}">{{c.name}}</option>
+                          {% endfor %}
+                            
+                        </select>
+                        <input type="text" name="price" placeholder="Product price">
+                        <input type="number" name="discount" placeholder="Product discount">
+                        <textarea name="description" placeholder="Description" cols="30" rows="5"></textarea>
+                       
+                        <!-- <input type="file" name="image" >-->
+                       <!-- {{ proform.submit }}-->
+                       {{ proform.image }}
+                       <button type="submit">Save</button>
+                    </form>
+                  </div>
+            </div>
+            <div class="addcategoryfor-div">
+              
+              <div class="mytable ">
+                <div class="tablediv">
+                 <table class="table ">
+                   
+                     <thead>
+                       <tr>
+                         <th scope="col">#</th>
+                         <th scope="col">First</th>
+                         <th scope="col">Last</th>
+                         <th scope="col">Handle</th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr>
+                         <th scope="row">1</th>
+                         <td>Mark</td>
+                         <td>Otto</td>
+                         <td>@mdo</td>
+                       </tr>
+                      
+                     </tbody>
+                   </table>
+                </div>
+                   <div class="formdiv">
+                     <form action="" method="post">
+                        {{ catform.csrf_token }}
+                        {{ catform.name.label }}
+                        {{ catform.name }}
+                        {{ catform.submit }}
+                        
+                     </form>
+                   </div>
+             </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}

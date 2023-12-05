@@ -1,0 +1,284 @@
+{% extends 'pages/layouts/header.html' %}
+  
+{% block content %}
+<section class="topbar">
+    <nav class="topnav">
+<div class="mobile-hurmbugar-div" onclick="opennavemobilebtn()">
+<button class="closnav-btn"><i class="fa-solid fa-bars"></i></button>
+</div>
+        <ul class="topul">
+            <li class="topli dropdown">
+                <a href="#">Help <span><i class="fa-solid fa-circle-chevron-down"></i></span> </a>
+                <ul class="dorpdownul">
+                   <div class="dropdownchildern">
+                    <li class="dropdwonli"><a href="">Help center</a></li>
+                    <li class="dropdwonli"><a href="">Disputs & report</a></li>
+
+                    <li class="dropdwonli"><a href="">report IPR infrigement</a></li>
+
+                   </div>
+                </ul>
+            </li>
+            <!-- end of dorpdown -->
+            <li class="topli"><a href="">Buyer Protection</a></li>
+            <li class="topli"><a href="">App</a></li>
+
+            <li class="topli"><a href="">Language</a></li>
+
+            <li class="topli"><a href=""><i class="fa-regular fa-heart"></i><span>Wish List</span></a></li>
+
+            <li class="topli account"><a href="#"><span><i class="fa-solid fa-user"></i></span> Account</a>
+                <ul class="accountdropdwonul">
+                  <div class="accountdiv">
+                    <div class="register-accountdiv">
+                        <li class="accountli regisgterli"><a href="">Register</a></li>
+                        <li class="accountli loginli"><a href="">Login</a></li>
+                    </div>
+                    <li class="topli"><a href="">My Order</a></li>
+                    <li class="topli"><a href="">My Coins</a></li>
+                    <li class="topli"><a href="">Message Center</a></li>
+                    <li class="topli"><a href="">Peyment</a></li>
+                    <li class="topli"><a href="">Wish List</a></li>
+                    <li class="topli"><a href="">My Favourite Stores</a></li>
+                    <li class="topli"><a href="">My Coupons</a></li>
+                    <li  class="topli"><a href="{{ url_for('admincategory.addcategory') }}">Product</a></li>
+                  </div>
+                </ul>
+            
+            </li>
+
+        </ul>
+    </nav>
+</section>
+
+<!-- the end of header top -->
+
+<!-- search bar -->
+
+<section class="searcnbar-seaction">
+    <ul class="searchbarul">
+        <li class="logo">
+            <a href="">
+                AliExpress
+            </a>
+        </li>
+        <div class="searchbardiv">
+            <form action="" class="searchbar-form">
+                <input type="text" placeholder="I'm shipping for">
+                <button><i class="fa-solid fa-magnifying-glass searchicon"></i></button>
+            </form>
+           
+        </div>
+        <button onclick="opensearchform()" class="open-searchformbtn"><i class="fa-solid fa-magnifying-glass open--icon"></i></button>
+        <li class="shopping-cart-li"><a href=""><i class="fa-solid fa-cart-shopping shopping-icon"></i>
+            <span class="count-span">90</span>
+        </a>
+       
+        </li>
+        <li class="qrcode"><a href="">
+            <img src="{{ url_for('static', filename='img/qrlcode.webp') }}" alt="">
+        </a></li>
+    </ul>
+   <div onclick="closeform()" class="closeform-div">
+    <button class="close-form-btn"><i class="fa-solid fa-xmark"></i></button>
+   </div>
+</section>
+
+<!-- the end of search bar -->
+<!-- category section -->
+<section class="category-and-main">
+    <div class="mobile-cate">
+        <h1 onclick="sidebarclick()"><span ><i class="fa-solid fa-bars"></i></span> Categories</h1>
+    </div>
+ <div class="sidebar-holder">
+    <div class="category-and-main-div">
+        <div class="sidebar">
+            <div class="categorys-icon-div">
+                <h1 onclick="sidebarclick()"><span ><i class="fa-solid fa-bars"></i></span> Categories</h1>
+            </div>
+            <!--  -->
+            <div class="category-items">
+               {% include 'pages/categorylinks.html' %}
+            </div>
+            <!--  -->
+        </div>
+        <div class="best-salers-div">
+          <!-- top policese -->
+          <div class="top-policies-div">
+            <div class="polices-item">
+                <h1><span><i class="fa-solid fa-shield"></i></span> Safe & reliable payments</h1>
+            </div>
+            <div class="polices-item">
+                <h1><span><i class="fa-solid fa-sack-dollar"></i></span> Money back guarantee</h1>
+            </div>
+            <div class="polices-item">
+                <h1> <span><i class="fa-solid fa-headphones"></i></span> 24/7 Customer Service</h1>
+            </div>
+          </div>
+    
+          <!-- the end of policis -->
+    
+          <!-- best salers items -->
+    
+          <div class="best-salers-items-div">
+            <div class="best-salers-left-items">
+                <h1>Your fave shopping guide</h1>
+                <div class="latest-deal-link">
+                    <a  href="">Check out the latest new deals</a>
+                </div>
+                <div class="shopping-guid-promo-div">
+               <div class="shopping-guid-promo-first">
+               
+               {% for toppro in protopcat %}
+               <div class="shopping-promo-img">
+                <a href="">
+                    <img src="{{ url_for('static',filename='productimg/'+ toppro.image) }}" alt="">
+                 
+              <div class="discount-best-saler">
+                  <h2>-{{toppro.discount}}%</h2>
+              </div>  
+              </a>
+              <div class="price-best-saler">
+                  <p>${{toppro.price}}</p>
+              </div>
+              </div>
+               {% endfor %}
+                
+                 
+               </div>
+    
+    
+               <div class="shopping-guid-promo-first">
+                
+                {% for toppro2 in protopcat2 %}
+                <div class="shopping-promo-two-img">
+                    <a href="">
+                      <img src="{{ url_for('static', filename='productimg/'+ toppro2.image) }}" alt="">
+                  <div class="discount-best-saler">
+                      <h2>-{{toppro2.discount}}%</h2>
+                  </div>  
+                  </a>
+                  <div class="price-best-saler">
+                      <p>${{toppro2.price}}</p>
+                  </div>
+                  </div>
+                {% endfor %}
+                    
+                 
+                 
+               </div>
+                </div>
+               
+            </div>
+    
+            <div class="best-salers-right-items">
+            <div class="first-best-saler-right-item">
+               <div class="best-sale-advert">
+                <img src="{{ url_for('static', filename='img/sales.webp') }}" alt="">
+               </div>
+               <div class="welcometo-chika">
+                <h1>Welcome to AliExpress!</h1>
+                <div class="welcome-links">
+                    <div class="join-div">
+                        <a href="">Join</a>
+                    </div>
+                    <div class="login-div">
+                        <a href="">Login</a>
+                    </div>
+                </div>
+               </div>
+    
+               
+            </div>
+            <div class="right-div">
+               <div class="superbest-dealsdiv">
+                <div class="superdeal">
+                    <h1>Super <span>Deals</span></h1>
+                    <a href="">Top products, incrediable prices</a>
+                </div>
+                <a href="">View All</a>
+               </div>
+                <div class="right-item-div">
+                   
+                   {% for best in bestdeal %}
+                   <div class="items-right-image-div">
+                    <a href="">
+                        <img src="{{ url_for('static', filename='productimg/' + best.image) }}" alt="">
+                        <div class="price-best-saler">
+                            <p>${{best.price}}</p>
+                        </div>
+                    </a>
+                    <div class="discount-best-saler">
+                        <h2>-{{best.discount}}%</h2>
+                    </div>
+                </div>
+                   {% endfor %}
+                    
+                   
+                    </div>
+                   </div>
+            </div>
+            </div>
+          </div>
+    
+          <!-- the end of best salers items -->
+    
+    
+        </div>
+       </div>
+    
+  </div>
+</section>
+
+<!-- the end of category section -->
+
+
+<!-- weekly sales -->
+
+<section class="weekly-section">
+    
+    {% for procat in catandpost %}
+    
+    {% if procat.product %}
+    <div class="items-category-name">
+        <div class="cate-name">
+            <h1>{{procat.name}}</h1>
+        </div>
+        <div class="items-cate-links">
+            <a href="">View All</a>
+        </div>
+    </div>
+    <div class="weekly-sales">
+    {% for p in procat.product %}
+        <div class="weekly-products-item">
+            <a href="">
+                <img src="{{ url_for('static',filename='productimg/'+ p.image) }}" alt="">
+            <div class="product-prices">
+                <p>${{p.price}}</p>
+                <p> <s>{{p.discount}}% off</s> </p>
+                <h1>{{p.name}}</h1>
+            </div>
+            </a>
+            <div class="addto-cart">
+                <a href=""><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
+            </div>
+        </div> 
+    
+    {% endfor %}
+</div>
+    {% endif %}
+        
+    {% endfor %}
+        
+    
+
+   
+   
+</section>
+
+
+
+<!-- the end of weekly sales -->
+
+{% endblock  %}
+

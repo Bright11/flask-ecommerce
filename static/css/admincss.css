@@ -1,0 +1,63 @@
+
+@import url(colors.css);
+.admin-container{
+    width: 90vw;
+    margin: 0px auto;
+}
+.admin-main-container{
+    display: flex;
+    gap: 20px;
+}
+.admin-sidebar{
+    flex-basis: 10%;
+    background-color: green;
+}
+.admin-main{
+    flex-basis: 80%;
+}
+.mytable{
+    display: flex;
+    gap: 20px;
+}
+.tablediv{
+    flex-basis: 80%;
+}
+.formdiv{
+    flex-basis: 20%;
+}
+
+.addcategoryfor-div{
+    display: none;
+}
+
+.showtable{
+    display: none;
+}
+
+.showform{
+    display: block;
+}
+.formdiv form{
+    width: 100%;
+}
+.formdiv form input, textarea,select{
+    width: 100%;
+    resize: none;
+    padding: 8px;
+    outline: none;
+    margin: 8px 0px;
+}
+.formdiv form button{
+    width: 100%;
+    border: none;
+    background-color: var(--primary-color);
+    padding: 5px;
+    color: white;
+}
+.adminproimg{
+    width: 80px;
+    height: 80px;
+}
+
+
+
