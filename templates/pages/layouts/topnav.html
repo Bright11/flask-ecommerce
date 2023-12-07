@@ -1,0 +1,55 @@
+<section class="topbar">
+    <nav class="topnav">
+<div class="mobile-hurmbugar-div" onclick="opennavemobilebtn()">
+<button class="closnav-btn"><i class="fa-solid fa-bars"></i></button>
+</div>
+        <ul class="topul">
+            <li class="topli dropdown">
+                <a href="#">Help <span><i class="fa-solid fa-circle-chevron-down"></i></span> </a>
+                <ul class="dorpdownul">
+                   <div class="dropdownchildern">
+                    <li class="dropdwonli"><a href="">Help center</a></li>
+                    <li class="dropdwonli"><a href="">Disputs & report</a></li>
+
+                    <li class="dropdwonli"><a href="">report IPR infrigement</a></li>
+
+                   </div>
+                </ul>
+            </li>
+            <!-- end of dorpdown -->
+            <li class="topli"><a href="">Buyer Protection</a></li>
+            <li class="topli"><a href="">App</a></li>
+
+            <li class="topli"><a href="">Language</a></li>
+
+            <li class="topli"><a href=""><i class="fa-regular fa-heart"></i><span>Wish List</span></a></li>
+
+            <li class="topli account"><a href="#"><span><i class="fa-solid fa-user"></i></span> Account</a>
+                <ul class="accountdropdwonul">
+                  <div class="accountdiv">
+                    <div class="register-accountdiv">
+                        
+                        {% if 'username' in session %}
+                            {% else %}
+                            <li class="accountli regisgterli"><a href="{{ url_for('registration.register') }}">Register</a></li>
+                        <li class="accountli loginli"><a href="{{ url_for('loginuser.login') }}">Login</a></li>
+                        {% endif %}
+                            
+                        
+                    </div>
+                    <li class="topli"><a href="">My Order</a></li>
+                    <li class="topli"><a href="">My Coins</a></li>
+                    <li class="topli"><a href="">Message Center</a></li>
+                    <li class="topli"><a href="">Peyment</a></li>
+                    <li class="topli"><a href="">Wish List</a></li>
+                    <li class="topli"><a href="">My Favourite Stores</a></li>
+                    <li class="topli"><a href="">My Coupons</a></li>
+                    <li  class="topli"><a href="{{ url_for('admincategory.addcategory') }}">Product</a></li>
+                  </div>
+                </ul>
+            
+            </li>
+
+        </ul>
+    </nav>
+</section>

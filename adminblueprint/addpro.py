@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,Blueprint,flash,redirect,url_for
 from forms import ProductForm
-from model import Product,db
+from model import Product
+from connection import db
 import unicodedata
 import re
 from werkzeug.utils import secure_filename

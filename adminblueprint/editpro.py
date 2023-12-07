@@ -2,12 +2,12 @@ from flask import Flask, render_template,flash,redirect,request,url_for,Blueprin
 
 from forms import ProductForm
 from werkzeug.utils import secure_filename
-from model import Product,db,Category
+from model import Product,Category
 import os 
 import uuid as uuid
 import re 
 import unicodedata
-from connection import app
+from connection import app,db
 
 editpro=Blueprint(
     'editpro',__name__,

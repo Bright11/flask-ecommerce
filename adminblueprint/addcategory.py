@@ -1,8 +1,9 @@
 from flask import Flask, Blueprint,render_template,flash,redirect,url_for
 from forms import CategoryForm,ProductForm
-from model import Category,db, Product
+from model import Category, Product
 import unicodedata
 import re
+from connection import db
 
 admincategory=Blueprint(
     'admincategory',__name__, static_folder='static',template_folder='templates'

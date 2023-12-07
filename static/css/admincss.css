@@ -60,4 +60,10 @@
 }
 
 
-
+input[type='submit']{
+    background-color: var(--primary-color);
+    padding: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

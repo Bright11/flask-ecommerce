@@ -4,8 +4,10 @@ from adminblueprint.addcategory import admincategory
 from adminblueprint.addpro import addproduct
 from adminblueprint.editpro import editpro
 from adminblueprint.deletpro import deletepro
-from model import db, Category
-from connection import app
+from blueprint.register import registration
+from blueprint.login import loginuser
+from model import  Category
+from connection import app,db
 
 
 app.register_blueprint(product_page)
@@ -13,6 +15,8 @@ app.register_blueprint(admincategory)
 app.register_blueprint(addproduct)
 app.register_blueprint(editpro)
 app.register_blueprint(deletepro)
+app.register_blueprint(registration)
+app.register_blueprint(loginuser)
 # database configuration
 
 db.init_app(app)

@@ -1,6 +1,6 @@
 from flask import Flask,render_template,flash, url_for,redirect,Blueprint,request
-from model import Product,db
-from connection import app
+from model import Product
+from connection import app,db
 
 deletepro=Blueprint(
     'deletepro',__name__,

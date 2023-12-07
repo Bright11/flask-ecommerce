@@ -10,6 +10,8 @@
     <script defer src="{{ url_for('static', filename='js/myjs.js') }}"></script>
 </head>
 <body>
+    <!--top nav-->
+    {% include "pages/layouts/topnav.html" %}
     <!-- header top -->
    {% block content %}{% endblock  %}
 </body>
