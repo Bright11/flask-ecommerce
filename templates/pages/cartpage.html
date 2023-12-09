@@ -1,0 +1,47 @@
+{% extends 'pages/layouts/header.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.css') }}">
+{% endblock  %}
+
+
+{% block content %}
+<div class="table-container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col">qty</th>
+            <th scope="col">Total</th>
+            <th scope="col">Update</th>
+            <th scope="col">Trash</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for c in cart %}
+          <tr>
+            <th scope="row">{{c.product.name}}</th>
+            <td>
+                <img class="cartrimg" src="{{ url_for('static',filename='productimg/'+ c.product.image) }}" alt="">
+            </td>
+            <td>{{c.product.price}}</td>
+            <td>{{c.qty}}</td>
+            <td>{{ c.total }}</td>
+            <td><a href=""><i class="fa-solid fa-pencil"></i></a></td>
+            <td><a href="{{ url_for('deletecart.deleteusercart',id=c['id']) }}"><i class="fa-solid fa-trash-can"></i></a></td>
+          </tr>
+          {% endfor %}
+            <tr>
+                <td>Total ${{total_cart_price}}</td>
+                <td rowspan="4" >
+                    <a href="/">Continue Shopping</a>
+                </td>
+            </tr>
+         
+        </tbody>
+      </table>
+</div>
+{% endblock  %}

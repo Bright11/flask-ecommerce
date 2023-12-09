@@ -30,6 +30,7 @@
                     <div class="register-accountdiv">
                         
                         {% if 'username' in session %}
+                        <li class="accountli regisgterli"><a href="{{ url_for('logout.logoutuser') }}">Logout</a></li>
                             {% else %}
                             <li class="accountli regisgterli"><a href="{{ url_for('registration.register') }}">Register</a></li>
                         <li class="accountli loginli"><a href="{{ url_for('loginuser.login') }}">Login</a></li>

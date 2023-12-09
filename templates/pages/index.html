@@ -6,35 +6,8 @@
 
 <!-- search bar -->
 
-<section class="searcnbar-seaction">
-    <ul class="searchbarul">
-        <li class="logo">
-            <a href="">
-                AliExpress
-            </a>
-        </li>
-        <div class="searchbardiv">
-            <form action="" class="searchbar-form">
-                <input type="text" placeholder="I'm shipping for">
-                <button><i class="fa-solid fa-magnifying-glass searchicon"></i></button>
-            </form>
-           
-        </div>
-        <button onclick="opensearchform()" class="open-searchformbtn"><i class="fa-solid fa-magnifying-glass open--icon"></i></button>
-        <li class="shopping-cart-li"><a href=""><i class="fa-solid fa-cart-shopping shopping-icon"></i>
-            <span class="count-span">90</span>
-        </a>
-       
-        </li>
-        <li class="qrcode"><a href="">
-            <img src="{{ url_for('static', filename='img/qrlcode.webp') }}" alt="">
-        </a></li>
-    </ul>
-   <div onclick="closeform()" class="closeform-div">
-    <button class="close-form-btn"><i class="fa-solid fa-xmark"></i></button>
-   </div>
-</section>
 
+{% include 'pages/layouts/search.html' %}
 <!-- the end of search bar -->
 <!-- category section -->
 <section class="category-and-main">
@@ -211,7 +184,7 @@
             </div>
             </a>
             <div class="addto-cart">
-                <a href=""><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
+                <a href="{{ url_for('usercat.addtocat',id=p['id']) }}"><span><i class="fa-solid fa-cart-shopping"></i></span> Add to Cart</a>
             </div>
         </div> 
     

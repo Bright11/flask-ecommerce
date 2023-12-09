@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mediaquery.css') }}">
     <script defer src="{{ url_for('static', filename='js/myjs.js') }}"></script>
+    {% block style %}{% endblock  %}
 </head>
 <body>
     <!--top nav-->
     {% include "pages/layouts/topnav.html" %}
     <!-- header top -->
    {% block content %}{% endblock  %}
+
+   {% include 'pages/layouts/footer.html' %}
 </body>
 </html>
